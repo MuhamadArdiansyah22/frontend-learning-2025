@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PROJECT 2:PROFILE CARD COMPONENT</title>
+        <style>
+            body {
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                margin: 0;
+                padding: 20px;
+                font-family: "Arial", sans-serif;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .profile-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                max-width: 300px;
+                margin: 50px auto;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                background: white;
+            }
+            .avatar {
+                height: 100px;
+                width: 100px;
+                border: 1px solid black;
+                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+                border-radius: 50%;
+            }
+            .name {
+                margin: 10px;
+            }
+            .title {
+                margin: 10px;
+            }
+
+            .contact-btn {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                padding: 12px 30px;
+                border: none;
+                border-radius: 25px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+            }
+
+            .contact-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            }
+            .skills {
+                display: flex;
+                gap: 10px;
+                margin: 15px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .skills span {
+                background: #667eea;
+                color: white;
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+            }
+            @media (max-width: 500px) {
+                .profile-card {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="profile-card">
+            <img
+                src="https://t4.ftcdn.net/jpg/11/66/06/77/360_F_1166067709_2SooAuPWXp20XkGev7oOT7nuK1VThCsN.jpg"
+                alt="Profile"
+                class="avatar"
+            />
+            <h2 class="name">Muhamad Ardiansyah</h2>
+            <p class="title">Teacher | Web Developer</p>
+            <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>Javascript</span>
+            </div>
+            <button class="contact-btn">Contact Me</button>
+        </div>
+    </body>
+</html>
