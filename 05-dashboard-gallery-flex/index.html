@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project 6: Navbar & Dashboard</title>
+    <style>
+      body {
+        background-color: #d9e9cf;
+        font-family: poppins, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        background-color: #b6ceb4;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        justify-content: space-between;
+        padding: 0 30px;
+        height: 70px;
+      }
+      .navbar-logo {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .navbar-list {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+      .navbar-list li {
+        border-bottom: 2px solid transparent;
+        transition: 0.2s ease-in-out;
+      }
+      .navbar-list li:hover {
+        border-bottom: 2px solid #96a78d;
+      }
+      .navbar-list li.active {
+        border-bottom: 2px solid #96a78d;
+      }
+      .navbar-logo img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        border: 1px solid black;
+      }
+      .content h2 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+      .card-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .card {
+        border: 4px solid white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 5px;
+        width: 300px;
+        transition: 0.2s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
+      }
+      .card img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      }
+      .view {
+        width: 100%;
+        padding: 5px;
+        border: none;
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+        transition: 0.2s ease-in;
+      }
+      .view:hover {
+        background-color: #96a78d;
+        color: white;
+      }
+      .footer {
+        background-color: #b6ceb4;
+        padding: 10px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      @media (max-width: 500px) {
+        .navbar {
+          flex-direction: column;
+          height: auto;
+          padding: 15px;
+        }
+        .navbar-list {
+          margin-top: 15px;
+        }
+        .card {
+          width: 100%;
+          max-width: 400px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <img
+            src="https://img.freepik.com/free-vector/creative-professional-cn-logo-template_23-2149230707.jpg?semt=ais_hybrid&w=740&q=80"
+            alt="Logo"
+          />
+          <h1>My Logo</h1>
+        </div>
+        <ul class="navbar-list">
+          <li class="active">Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+      <main class="content">
+        <h2>Gallery Google</h2>
+        <div class="card-container">
+          <div class="card">
+            <h3>Photo 1</h3>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQepi9e6qKQPXxbXnfjyG1nLfrMqE25aWSF5A&s"
+              alt="Img 1"
+            />
+            <button class="view">Detail</button>
+          </div>
+          <div class="card">
+            <h3>Photo 2</h3>
+            <img
+              src="https://onehorizonproductions.com/wp-content/uploads/2023/05/OHP-03325-scaled.webp"
+              alt="Img 2"
+            />
+            <button class="view">Detail</button>
+          </div>
+          <div class="card">
+            <h3>Photo 3</h3>
+            <img
+              src="https://nottinghamfamilyphotographer.com/wp-content/uploads/2022/04/photoshoot-for-women.jpg.webp"
+              alt="Img 3"
+            />
+            <button class="view">Detail</button>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <span>Copyright @2025 by ardians ❤️</span>
+      </footer>
+    </div>
+  </body>
+</html>
