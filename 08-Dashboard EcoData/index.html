@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Eco Data</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        min-width: 100vh;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      .dashboard-container {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        min-height: 100vh;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        background-color: #6e8cfb;
+        padding: 15px;
+        color: white;
+        gap: 25px;
+        position: relative;
+      }
+      .logo {
+        border-bottom: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .nav-item {
+        padding: 7px;
+        color: white;
+        text-decoration: none;
+        transition: 0.2s ease-in-out;
+        background-color: #636ccb transparent;
+      }
+      .active {
+        color: white;
+        background-color: #636ccb;
+        border-radius: 10px;
+        padding: 7px;
+        font-weight: 700;
+      }
+      .nav-item:hover {
+        color: black;
+        padding: 7px;
+        background-color: #636ccb62;
+        border-radius: 10px;
+      }
+      .user-profile {
+        position: absolute;
+        bottom: 20px;
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        gap: 10px;
+      }
+      .profile-info {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .profile-info .role {
+        color: rgb(199, 199, 199);
+      }
+      .avatar {
+        width: 50px;
+        border-radius: 50%;
+        border: 1px solid black;
+      }
+      .main-content {
+        background-color: aliceblue;
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+        gap: 10px;
+      }
+      .navbar {
+        background-color: #636ccb;
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+        gap: 15px;
+        justify-content: space-between;
+      }
+      .page-title {
+        color: white;
+        padding-left: 15px;
+        font-size: 28px;
+      }
+      .search-bar {
+        display: flex;
+        gap: 5px;
+      }
+      .search-bar input {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        opacity: 0.9;
+      }
+
+      .icon-button {
+        padding: 8px;
+        border: none;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 10px;
+        margin: 0 10px;
+      }
+      .metric-card {
+        background-color: #cbdceb;
+        border: 2px solid #d1d1d1;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.4);
+      }
+      .card-header {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-bottom: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .card-value {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: #1e293b;
+        margin-bottom: 10px;
+      }
+      .card-trend {
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 6px 12px;
+        border-radius: 12px;
+        display: inline-block;
+      }
+      .charts-area {
+        background-color: bisque;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin: 0 10px;
+        padding: 20px;
+      }
+      .chart-large,
+      .chart-small {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e2e8f0;
+      }
+      .chart-dummy {
+        background: #f8fafc;
+        border: 2px dashed #cbd5e1;
+        border-radius: 8px;
+        padding: 50px 20px;
+        text-align: center;
+        color: #64748b;
+        margin-top: 20px;
+        font-style: italic;
+        font-size: 0.9rem;
+      }
+      .positive {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .negative {
+        background: #fee2e2;
+        color: #dc2626;
+      }
+      .neutral {
+        background: #fef3c7;
+        color: #d97706;
+      }
+      @media (min-width: 568px) {
+        .dashboard-container {
+          grid-template-columns: 170px 1fr;
+        }
+        .navbar {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .search-bar {
+          width: 85%;
+        }
+
+        .metrics-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+        <div class="logo">
+          <h2>EcoData 🍃</h2>
+        </div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-item active">Dashboard</a>
+          <a href="#" class="nav-item">Laporan Keberlanjutan</a>
+          <a href="#" class="nav-item">Analisis Emisi</a>
+          <a href="#" class="nav-item">Pengaturan</a>
+          <a href="#" class="nav-item">Bantuan</a>
+        </nav>
+        <div class="user-profile">
+          <img
+            src="https://t4.ftcdn.net/jpg/11/66/06/77/360_F_1166067709_2SooAuPWXp20XkGev7oOT7nuK1VThCsN.jpg"
+            alt="Avatar Pengguna"
+            class="avatar"
+          />
+          <div class="profile-info">
+            <span class="name">Jane Doe</span>
+            <span class="role">Admin</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="navbar">
+          <h1 class="page-title">Ringkasan Dashboard</h1>
+          <div class="search-bar">
+            <input type="text" placeholder="Cari laporan atau metrik..." />
+            <button class="icon-button">🔍</button>
+          </div>
+          <div class="user-actions">
+            <button class="icon-button">🔔</button>
+            <button class="icon-button">⚙️</button>
+          </div>
+        </header>
+
+        <section class="metrics-grid">
+          <div class="card metric-card">
+            <div class="card-header">Total Emisi CO2</div>
+            <div class="card-value">12.4K Ton</div>
+            <div class="card-trend positive">↑ 4.5% dari bulan lalu</div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="card-header">Penggunaan Energi Terbarukan</div>
+            <div class="card-value">78%</div>
+            <div class="card-trend neutral">→ Stabil</div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="card-header">Sampah Didaur Ulang</div>
+            <div class="card-value">450 Ton</div>
+            <div class="card-trend positive">↑ 12%</div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="card-header">Konsumsi Air</div>
+            <div class="card-value">2,100 m³</div>
+            <div class="card-trend negative">↓ 3.1%</div>
+          </div>
+        </section>
+
+        <section class="charts-area">
+          <div class="card chart-large">
+            <div class="card-header">Emisi CO2 Bulanan (Ton)</div>
+            <div class="chart-dummy">[Area Placeholder Grafik Batang]</div>
+          </div>
+
+          <div class="card chart-small">
+            <div class="card-header">Alokasi Energi (%)</div>
+            <div class="chart-dummy">[Area Placeholder Grafik Donut]</div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
